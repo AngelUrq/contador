@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Horas de trabajo</string>
+    <string name="tab_text_1">Horas</string>
+    <string name="tab_text_2">Supervisores</string>
+    <string name="tab_text_3">Análisis</string>
+    <string name="action_settings">Configuración</string>
+    <string name="section_format">Hola mundo desde la sección: %1$d</string>
+</resources>
