@@ -64,28 +64,83 @@ public class HorasFragment extends Fragment {
     }
 
     public void registrar(){
+        boolean validacion = true;
+
         String actividad = et_actividad.getText().toString();
         String horas = et_horas.getText().toString();
         String fecha = et_fecha.getText().toString();
-        String supervisor = buscarCodigo(sp_supervisor.getSelectedItem().toString());
+        String supervisor = "";
 
-        final Helper helper = new Helper(getView().getContext());
+        try{
+            supervisor = buscarCodigo(sp_supervisor.getSelectedItem().toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+            validacion = false;
+        }
 
-        SQLiteDatabase db = helper.getWritableDatabase();
+        if(!horas.matches("[0-9]+(:[0-5][0-9])?")){
+            Toast.makeText(getView().getContext(), "Las horas deben estar en formato HH:MM", Toast.LENGTH_LONG).show();
+            validacion = false;
+        }
+        if(!comprobarFecha(fecha)){
+            Toast.makeText(getView().getContext(), "La fecha no es correcta. No olvides que debe estar en formato DD/MM/YYYY", Toast.LENGTH_LONG).show();
+            validacion = false;
+        }
 
-        ContentValues values = new ContentValues();
-        values.put(Estructura.TareasTabla.NOMBRE_COLUMNA1, Generador.generarCodigo());
-        values.put(Estructura.TareasTabla.NOMBRE_COLUMNA2, actividad);
-        values.put(Estructura.TareasTabla.NOMBRE_COLUMNA3, horas);
-        values.put(Estructura.TareasTabla.NOMBRE_COLUMNA4, fecha);
-        values.put(Estructura.TareasTabla.NOMBRE_COLUMNA5, supervisor);
+        if(validacion){
+            final Helper helper = new Helper(getView().getContext());
 
-        db.insert(Estructura.TareasTabla.NOMBRE_TABLA, null, values);
+            SQLiteDatabase db = helper.getWritableDatabase();
 
-        Toast.makeText(getView().getContext(), "¡Registro insertado correctamente!", Toast.LENGTH_LONG).show();
+            ContentValues values = new ContentValues();
+            values.put(Estructura.TareasTabla.NOMBRE_COLUMNA1, Generador.generarCodigo());
+            values.put(Estructura.TareasTabla.NOMBRE_COLUMNA2, actividad);
+            values.put(Estructura.TareasTabla.NOMBRE_COLUMNA3, horas);
+            values.put(Estructura.TareasTabla.NOMBRE_COLUMNA4, fecha);
+            values.put(Estructura.TareasTabla.NOMBRE_COLUMNA5, supervisor);
 
-        getActivity().recreate();
+            db.insert(Estructura.TareasTabla.NOMBRE_TABLA, null, values);
+
+            Toast.makeText(getView().getContext(), "¡Registro insertado correctamente!", Toast.LENGTH_LONG).show();
+
+            getActivity().recreate();
+        }
     }
+
+    private boolean comprobarFecha(String fecha) {
+        if(!fecha.matches("([1-3]?[0-9]|[0-3]?[1-9])(/|-)[0-1][0-9](/|-)[0-9][0-9][0-9][0-9]")){
+            return false;
+        }
+
+        String[] fechas = fecha.split("/|-");
+
+        boolean validacion = true;
+
+        int dia = Integer.parseInt(fechas[0]);
+        int mes = Integer.parseInt(fechas[1]);
+        int año = Integer.parseInt(fechas[2]);
+
+        int maximo = 30;
+
+        if (mes == 2) {
+            if(año % 4 == 0 && (año % 100 != 0 || año % 400 == 0)) {
+                maximo = 29;
+            } else {
+                maximo = 28;
+            }
+        } else {
+            if((mes < 8 && mes % 2 != 0) || (mes > 8 && mes % 2 == 0 ) || mes == 8) {
+                maximo = 31;
+            }
+        }
+
+        if(dia > maximo){
+            validacion = false;
+        }
+
+        return validacion;
+    }
+
 
     private void iniciarFecha(){
         String fecha = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
