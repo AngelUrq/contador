@@ -1,12 +1,14 @@
 package com.horas.az.horasdetrabajo;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +29,7 @@ import java.util.Date;
 public class HorasFragment extends Fragment {
 
     private Button boton_registrar;
+    private Button boton_listar;
 
     private EditText et_actividad,et_horas, et_fecha;
 
@@ -59,6 +62,16 @@ public class HorasFragment extends Fragment {
                 registrar();
             }
         });
+
+        boton_listar = getView().findViewById(R.id.boton_listar);
+        boton_listar.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent lista = new Intent(getContext(), ListaHorasActivity.class);
+                startActivity(lista);
+            }
+        });
+
 
         iniciarFecha();
     }
@@ -134,7 +147,7 @@ public class HorasFragment extends Fragment {
             }
         }
 
-        if(dia > maximo){
+        if(dia > maximo || dia == 0){
             validacion = false;
         }
 

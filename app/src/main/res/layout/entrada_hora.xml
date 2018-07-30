@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteY="81dp">
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="0dp"
+        android:layout_height="53dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="28dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginStart="16dp"
+        android:adjustViewBounds="true"
+        android:cropToPadding="false"
+        android:maxHeight="35dp"
+        android:maxWidth="74dp"
+        android:src="@drawable/lista"
+        app:layout_constraintEnd_toStartOf="@+id/aentrada_horas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/aentrada_fecha" />
+
+    <TextView
+        android:id="@+id/aentrada_supervisor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginLeft="88dp"
+        android:layout_marginRight="29dp"
+        android:layout_marginStart="88dp"
+        android:text="Supervisor: "
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toStartOf="@+id/entrada_supervisor"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/aentrada_horas" />
+
+    <TextView
+        android:id="@+id/aentrada_fecha"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="14dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="27dp"
+        android:layout_marginStart="25dp"
+        android:text="Fecha: "
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/aentrada_horas"
+        app:layout_constraintEnd_toStartOf="@+id/entrada_supervisor"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/aentrada_actividad" />
+
+    <TextView
+        android:id="@+id/aentrada_horas"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="13dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
+        android:text="Horas:"
+        android:textColor="@color/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/aentrada_supervisor"
+        app:layout_constraintEnd_toStartOf="@+id/entrada_horas"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/aentrada_fecha" />
+
+    <TextView
+        android:id="@+id/aentrada_actividad"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="17dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginLeft="85dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="16dp"
+        android:text="Actividad: "
+        android:textColor="?attr/actionModeSplitBackground"
+        app:layout_constraintBottom_toTopOf="@+id/aentrada_fecha"
+        app:layout_constraintEnd_toStartOf="@+id/entrada_actividad"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/entrada_supervisor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toStartOf="@+id/button"
+        app:layout_constraintStart_toEndOf="@+id/aentrada_supervisor"
+        app:layout_constraintTop_toBottomOf="@+id/entrada_horas" />
+
+    <EditText
+        android:id="@+id/entrada_actividad"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="11dp"
+        android:layout_marginEnd="93dp"
+        android:layout_marginRight="93dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/entrada_fecha"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/aentrada_actividad"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/entrada_fecha"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginStart="1dp"
+        android:ems="10"
+        android:inputType="date"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/entrada_horas"
+        app:layout_constraintEnd_toEndOf="@+id/entrada_actividad"
+        app:layout_constraintStart_toStartOf="@+id/entrada_actividad"
+        app:layout_constraintTop_toBottomOf="@+id/entrada_actividad" />
+
+    <EditText
+        android:id="@+id/entrada_horas"
+        android:layout_width="88dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginRight="29dp"
+        android:ems="10"
+        android:inputType="time"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/entrada_supervisor"
+        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintStart_toEndOf="@+id/aentrada_horas"
+        app:layout_constraintTop_toBottomOf="@+id/entrada_fecha" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="51dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:background="@drawable/borrar"
+        app:layout_constraintBottom_toTopOf="@+id/guideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/entrada_supervisor"
+        app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="44dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="48dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginRight="27dp"
+        android:layout_marginTop="81dp"
+        android:background="@drawable/guardar"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/entrada_horas"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="210dp" />
+
+</android.support.constraint.ConstraintLayout>
