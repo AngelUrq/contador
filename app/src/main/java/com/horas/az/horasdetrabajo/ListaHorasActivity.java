@@ -3,8 +3,11 @@ package com.horas.az.horasdetrabajo;
 import android.app.Activity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.horas.az.horasdetrabajo.adaptadores.AdaptadorTareas;
 import com.horas.az.horasdetrabajo.bbdd.Estructura;
@@ -57,5 +60,7 @@ public class ListaHorasActivity extends Activity {
         ListView lista =  findViewById(R.id.lista);
         AdaptadorTareas adapter = new AdaptadorTareas(this, tareas);
         lista.setAdapter(adapter);
+
+
     }
 }

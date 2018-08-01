@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Horas de trabajo</string>
+    <string name="app_name">Control de horas</string>
     <string name="tab_text_1">Tareas</string>
     <string name="tab_text_2">Supervisores</string>
     <string name="tab_text_3">Análisis</string>
